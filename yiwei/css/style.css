@@ -1,0 +1,166 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* 加载屏幕 */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: #fff;
+}
+
+.loading-content {
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+}
+
+.loading-content h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #f8d568;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #f8d568;
+    transition: width 0.3s ease;
+}
+
+.loading-text {
+    font-size: 1rem;
+}
+
+/* 游戏容器 */
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 视频播放器 */
+#video-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.video-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+#frame-video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+#close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background-color: #f8d568;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#close-video:hover {
+    background-color: #fff;
+}
+
+/* 控制提示 */
+.controls-overlay {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 50;
+}
+
+/* 进度指示器 */
+.progress-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 50;
+    font-weight: bold;
+}
+
+#videos-watched {
+    color: #f8d568;
+}
+
+.controls-overlay p {
+    margin-bottom: 10px;
+}
+
+#hide-controls {
+    background-color: #f8d568;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#hide-controls:hover {
+    background-color: #fff;
+}
+
+/* 通用类 */
+.hidden {
+    display: none !important;
+}

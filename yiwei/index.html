@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>以为寻宝记</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1>以为寻宝记</h1>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="loading-text">加载中... <span id="loading-progress">0%</span></p>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="video-player" class="hidden">
+            <div class="video-container">
+                <video id="frame-video" controls></video>
+                <button id="close-video">关闭</button>
+            </div>
+        </div>
+        <div id="controls-help" class="controls-overlay">
+            <p>使用 WASD 键移动角色</p>
+            <p>点击相框观看视频</p>
+            <p>收集所有视频后点击宝箱获得奖励</p>
+            <button id="hide-controls">了解</button>
+        </div>
+    </div>
+
+    <!-- 引入Three.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <!-- 调试信息面板 -->
+    <div id="debug-panel" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #0f0; padding: 10px; border-radius: 5px; font-family: monospace; max-height: 200px; overflow-y: auto; z-index: 1000; display: none;">
+        <div id="debug-info"></div>
+    </div>
+
+    <!-- 调试函数 -->
+    <script>
+    // 显示调试信息的函数
+    function showDebugInfo(message) {
+        console.log('[调试]', message);
+        const debugPanel = document.getElementById('debug-panel');
+        const debugInfo = document.getElementById('debug-info');
+        
+        // 显示调试面板
+        debugPanel.style.display = 'block';
+        
+        // 添加消息
+        const msgElement = document.createElement('div');
+        msgElement.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        debugInfo.appendChild(msgElement);
+        
+        // 自动滚动到底部
+        debugPanel.scrollTop = debugPanel.scrollHeight;
+    }
+
+    // 全局错误处理
+    window.onerror = function(message, source, lineno, colno, error) {
+        showDebugInfo(`错误: ${message} (${source}:${lineno}:${colno})`);
+        return false;
+    };
+    </script>
+    
+    <!-- 游戏脚本 -->
+    <script src="./js/config.js"></script>
+    <script src="./js/character.js"></script>
+    <script src="./js/interactables.js"></script>
+    <script src="./js/game.js"></script>
+</body>
+</html>
